@@ -1,3 +1,21 @@
 * {
     box-sizing: border-box;
 }
+
+/*common section styling*/
+.overall {
+    width:80%;
+}
+
+/*sections with flex box center*/
+header, main {
+    display: flex;
+    justify-content: center;
+
+}
+
+/*header*/
+
+h1 {
+    text-align: center;
+}
