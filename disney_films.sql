@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.41)
 # Database: sjdisneyFilms
-# Generation Time: 2023-02-06 12:13:10 +0000
+# Generation Time: 2023-02-06 12:32:01 +0000
 # ************************************************************
 
 
@@ -30,7 +30,7 @@ CREATE TABLE `films` (
   `title` varchar(250) NOT NULL DEFAULT '',
   `year` year(4) NOT NULL,
   `character` varchar(250) NOT NULL DEFAULT '',
-  `imageURL` varchar(1000) NOT NULL DEFAULT '',
+  `imageURL` varchar(2048) NOT NULL DEFAULT '',
   `rating` enum('0','1','2','3','4','5','6','7','8','9','10') DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
