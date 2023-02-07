@@ -25,3 +25,25 @@ function displayDb(PDO $db): array
     $stmnt->execute();
     return $stmnt->fetchAll();
 }
+
+function displayFilms(array $films): string
+{
+    $result = '';
+    foreach ($films as $film) {
+        $result .= '<div class="film_collection">
+                        <article>
+                            <div class="film_info1">
+                                <img src=' . $film['imageURL'] . ' alt="stock image">
+                            </div>
+                            <div class="film_info2">
+                                <h2>' . $film['title'] . '</h2>
+                                <p> Year of Release: ' . $film['year'] . '</p>
+                                <p> Main Character: ' . $film['character'] . '</p>
+                                <p> Rating out of 10: ' . $film['rating'] . '</p>
+                            </div>
+                         </article>
+                     </div>';
+    }
+    return $result;
+}
+
