@@ -30,10 +30,15 @@ function displayFilms(array $films): string
 {
     $result = '';
     foreach ($films as $film) {
-        $result .= '<div class="film_collection">
+        if (array_key_exists('imageURL', $film)
+            && array_key_exists('title', $film)
+            && array_key_exists('year', $film)
+            && array_key_exists('character', $film)
+            && array_key_exists('rating', $film)) {
+            $result .= '<div class="film_collection">
                         <article>
                             <div class="film_info1">
-                                <img src=' . $film['imageURL'] . ' alt="stock image">
+                                <img src="' . $film['imageURL'] . '" alt="stock image">
                             </div>
                             <div class="film_info2">
                                 <h2>' . $film['title'] . '</h2>
@@ -43,7 +48,9 @@ function displayFilms(array $films): string
                             </div>
                          </article>
                      </div>';
+        }
     }
     return $result;
 }
+
 
