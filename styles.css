@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "DisneyTitle";
+    src: url("NewWaltDisneyUi-8YdA.ttf");
+}
+
+@font-face {
+    font-family: "DisneyText";
+    src: url("NewWaltDisneyFontRegular-BPen.ttf");
+}
+
+html {
+    font-size: 62.5%;
+}
+/*common section styling*/
+.overall {
+    width:80%;
+}
+
+/*sections with flex box center*/
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/*header*/
+header {
+    background-image: url('disneycastle.jpeg');
+    background-position: center center;
+    background-size: cover;
+    height: 80vh;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+header h1 {
+    text-align: center;
+    padding: 2%;
+    background-color: white;
+    opacity: 0.7;
+    font-family: DisneyTitle;
+    margin-top: 8em;
+    font-size: 3.2rem;
+}
+
+
+/*main*/
+main {
+    background-color: #4a62d8;
+}
+
+article {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 300px;
+    margin: 30px;
+    background-color: #1ab28a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*align-items: center;*/
+    font-family: DisneyText;
+}
+
+article h2{
+    text-align: center;
+    font-size: 3rem;
+}
+
+article p{
+    font-size: 2rem;
+}
+
+article img {
+    width: 60%;
+}
+
+.film_collection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.film_info1 {
+    text-align: center;
+}
+
+.film_info2 {
+    padding-left: 10px;
+}
+
