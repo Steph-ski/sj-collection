@@ -61,10 +61,16 @@ class FunctionsTest extends TestCase
             ['imageURL'=> 'https://www.google.com', 'title'=>'babe', 'year'=>'1997','character'=>'Bob','rating'=>9],
             ['imageURL'=> 'https://www.google.com', 'year'=>'1997','character'=>'Bob','rating'=>9],
             ['title'=>'toy story', 'year'=>'2000','character'=>'Woody','rating'=>10],
-            ['imageURL'=> 'https://www.google.com', 'title'=>'babe', 'year'=>'1997','character'=>'Bob','rating'=>9]
+            ['imageURL'=> 'https://www.google.com', 'title'=>'babe', 'year'=>'1997','character'=>'Bob','rating'=>9],
+            ['imageURL'=> 'https://www.google.com', 'name'=>'babe', 'year'=>'1997','character'=>'Bob','rating'=>9]
         ];
         $case = displayFilms($input);
         $this->assertEquals($expected, $case);
-
+    }
+    public function testMalformedDisplayFilms()
+    {
+        $this->expectException(TypeError::class);
+        $input = 'silly';
+        $case = displayFilms($input);
     }
 }
