@@ -73,4 +73,13 @@ class FunctionsTest extends TestCase
         $input = 'silly';
         $case = displayFilms($input);
     }
+
+    public function testSuccessValidateNewItem()
+    {
+        $expected = 'valid';
+        $input = 'Babe', 'https://www.google.com/', '1998', 'Dave', '7';
+        $case = validateAddNewItem($input);
+        $this->assertEquals($expected, $case);
+
+    }
 }

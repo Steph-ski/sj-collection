@@ -61,3 +61,35 @@ function displayFilms(array $films): string
 }
 
 
+/**
+ * sanitizes and validates user input for new film item. Returns either 'valid' or 'invalid'
+ *
+ * @param $title
+ * @param $imageURL
+ * @param $year
+ * @param $mainCharacter
+ * @param $rating
+ * @return string
+ */
+function validateAddNewItem($title, $imageURL, $year, $mainCharacter, $rating): string
+{
+    $title = filter_var($title, FILTER_SANITIZE_STRING);
+    $title = preg_match('/(^[_A-z0-9]*((-|\s)*[_A-z0-9])*$){0,250}/', $title);
+
+    $year = preg_match('/(?:(?:19|20)[0-9]{2})/', $year);
+
+    $imageURL= filter_var($imageURL, FILTER_SANITIZE_URL);
+    $imageURL = filter_var($imageURL, FILTER_VALIDATE_URL);
+
+    $mainCharacter = preg_match('/(^[_A-z0-9]*((-|\s)*[_A-z0-9])*$){0,250}/', $mainCharacter);
+
+    $rating = in_array($rating, range('0','10'));
+
+    if ($title && $year && $imageURL && $mainCharacter && $rating) {
+        return 'valid';
+    } else{
+        return 'invalid';
+    }
+}
+
+
