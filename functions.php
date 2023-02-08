@@ -14,7 +14,7 @@ function createDbConn(): PDO
 
 
 /**
- * Displays collection DB on index.php
+ * Displays collection as an assoc array
  *
  * @param PDO $db
  * @return array of the films in the collection
@@ -26,6 +26,13 @@ function displayDb(PDO $db): array
     return $stmnt->fetchAll();
 }
 
+
+/**
+ * Displays the values from an array of films into HTML code to display info on each film individually via a foreach loop
+ *
+ * @param array $films
+ * @return string of each film's details
+ */
 function displayFilms(array $films): string
 {
     $result = '';
