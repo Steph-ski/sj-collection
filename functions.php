@@ -71,7 +71,7 @@ function displayFilms(array $films): string
  * @param $rating
  * @return string
  */
-function validateAddNewItem($title, $imageURL, $year, $mainCharacter, $rating): string
+function validateAddNewItem(string $title, string $imageURL, string $year, string $mainCharacter, string $rating): string
 {
     $title = filter_var($title, FILTER_SANITIZE_STRING);
     $title = preg_match('/(^[_A-z0-9]*((-|\s)*[_A-z0-9])*$){0,250}/', $title);
