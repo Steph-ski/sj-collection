@@ -34,11 +34,6 @@ $filmHtml = displayFilms($films);
     </section>
 </main>
 
-<section class="button_section">
-    <div class="add_button">
-        <a  href="#">Click Here to Add to Collection</a>
-    </div>
-</section>
 
 </body>
 </html>
