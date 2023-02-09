@@ -62,16 +62,16 @@ function displayFilms(array $films): string
 
 
 /**
- * sanitizes and validates user input for new film item. Returns either 'valid' or 'invalid'
+ * sanitizes and validates user input for new film item. Returns either 'true' or 'false'
  *
  * @param $title
  * @param $imageURL
  * @param $year
  * @param $mainCharacter
  * @param $rating
- * @return string
+ * @return bool
  */
-function validateAddNewItem(string $title, string $imageURL, string $year, string $mainCharacter, string $rating): string
+function validateAddNewItem(string $title, string $imageURL, string $year, string $mainCharacter, string $rating): bool
 {
     $title = preg_match('/^[A-Za-z0-9 ]{1,250}$/', $title);
 
