@@ -61,3 +61,58 @@ function displayFilms(array $films): string
 }
 
 
+/**
+ * sanitizes and validates user input for new film item. Returns either 'true' or 'false'
+ *
+ * @param $title
+ * @param $imageURL
+ * @param $year
+ * @param $mainCharacter
+ * @param $rating
+ * @return bool
+ */
+function validateAddNewItem(string $title, string $imageURL, string $year, string $mainCharacter, string $rating): bool
+{
+    $title = preg_match('/^[A-Za-z0-9 ]{1,250}$/', $title);
+
+    $year = preg_match('/(?:(?:19|20)[0-9]{2})/', $year);
+
+    $imageURL= filter_var($imageURL, FILTER_SANITIZE_URL);
+    $imageURL = filter_var($imageURL, FILTER_VALIDATE_URL);
+
+    $mainCharacter = preg_match('/^[A-Za-z0-9 ]{1,250}$/', $mainCharacter);
+
+    $rating = in_array($rating, range('0','10'));
+
+    if ($title && $year && $imageURL && $mainCharacter && $rating) {
+       return true;
+    } else{
+        return false;
+    }
+}
+
+
+/**
+ * Adds new film details to MySQL
+ *
+ * @param PDO $db
+ * @param string $title
+ * @param string $imageURL
+ * @param string $year
+ * @param string $mainCharacter
+ * @param string $rating
+ *
+ * @return void
+ */
+function insertNewFilm (PDO $db, string $title, string $imageURL, string $year, string $mainCharacter, string $rating): void
+{
+    $stmnt = $db->prepare("INSERT INTO `films` (`title`, `year`, `character`, `imageURL`, `rating`) VALUES (:title, :year, :character, :imageURL, :rating);");
+    $stmnt->bindParam(':title', $title);
+    $stmnt->bindParam(':year', $year);
+    $stmnt->bindParam(':character', $mainCharacter);
+    $stmnt->bindParam(':imageURL', $imageURL);
+    $stmnt->bindParam(':rating', $rating);
+    $stmnt->execute();
+}
+
+

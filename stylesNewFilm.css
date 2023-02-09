@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "DisneyTitle";
+    src: url("NewWaltDisneyUi-8YdA.ttf");
+}
+
+@font-face {
+    font-family: "DisneyText";
+    src: url("NewWaltDisneyFontRegular-BPen.ttf");
+}
+
+
+header {
+    background-image: url('disneycastle.jpeg');
+    background-position: center center;
+    background-size: cover;
+    height: 80vh;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+
+h1 {
+    font-family: DisneyTitle;
+    margin-top: 0px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+form {
+    font-family: DisneyText;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+main {
+
+    background-color: #4a62d8;
+}
+
+button {
+    justify-content: center;
+    text-align: center;
+    border: 8px solid #1ab28a;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: #fbbe4f;
+    cursor: pointer;
+    text-decoration: none;
+    width: 300px;
+    font-family: DisneyText;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
