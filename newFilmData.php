@@ -18,3 +18,12 @@ $rating = $_POST['rating'];
 
 echo validateAddNewItem($title, $imageURL, $year, $mainCharacter, $rating);
 
+
+$db = createDbConn();
+
+if ($result = true)
+{
+    insertNewFilm($db, $title, $imageURL, $year, $mainCharacter, $rating);
+} else {
+    header ('Location: index.php');
+}
