@@ -74,25 +74,44 @@ class FunctionsTest extends TestCase
         $case = displayFilms($input);
     }
 
-    public function testSuccessValidateNewItem()
+    /**
+     * @dataProvider validateProvider
+     */
+    public function testValidateAddNewItem($title, $imageURL, $year, $mainCharacter, $rating, $expected)
     {
-        $expected = 'valid';
-        $case = validateAddNewItem('Babe', 'https://www.google.com/', '1998', 'Dave', '7');
+        $case = validateAddNewItem($title, $imageURL, $year, $mainCharacter, $rating);
         $this->assertEquals($expected, $case);
-
     }
 
-    public function testFailureValidateNewItem()
+    public function validateProvider(): array
     {
-        $expected = 'invalid';
-        $case = validateAddNewItem('B@be*', 'https://www.google.com/', '1598', 'Dave', '12');
-        $this->assertEquals($expected, $case);
-
+        return [
+            'success new item' => ['Babe', 'https://www.google.com/', '1998', 'Dave', '7', true],
+            'failure on title new item' => ['B@be*', 'https://www.google.com/', '1998', 'Dave', '7', false],
+            'failure on img_url new item' => ['Babe', 'https://www.goo%^gle.com/', '1998', 'Dave', '7', false],
+            'failure on year new item' => ['Babe', 'https://www.google.com/', '1598', 'Dave', '7', false],
+            'failure on main_character new item' => ['Babe', 'https://www.google.com/', '1998', 'D@ve', '7', false],
+            'failure on rating new item' => ['Babe', 'https://www.google.com/', '1998', 'Dave', '12', false],
+        ];
     }
-    public function testMalformedValidateNewItem()
+
+    /**
+     * @dataProvider validateExceptionProvider
+     */
+    public function testMalformedValidateNewItem($title, $imageURL, $year, $mainCharacter, $rating, $expected)
     {
-        $this->expectException(TypeError::class);
-        $input = ['Babe 2','https://www.google.com/','2002'];
-        $case = validateAddNewItem($input);
+        $this->expectException($expected);
+        $case = validateAddNewItem($title, $imageURL, $year, $mainCharacter, $rating);
+    }
+
+    public function validateExceptionProvider(): array
+    {
+        return [
+            'title as array' => [['Babe 2'],'https://www.google.com/','2002', 'bilbo swaggins', '8', TypeError::class],
+            'img_URL as array' => ['Babe 2',['https://www.google.com/'],'2002', 'bilbo swaggins', '8', TypeError::class],
+            'year as array' => ['Babe 2','https://www.google.com/',['2002'], 'bilbo swaggins', '8', TypeError::class],
+            'main_character as array' => ['Babe 2','https://www.google.com/','2002', ['bilbo swaggins'], '8', TypeError::class],
+            'rating as array' => ['Babe 2','https://www.google.com/','2002', 'bilbo swaggins', ['8'], TypeError::class],
+        ];
     }
 }

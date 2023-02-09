@@ -26,11 +26,11 @@ session_start();
     <h1> Add New Film</h1>
 
 <form method="post" action="newFilmData.php">
-    <label>Film Title:</label> <input id="title" type="text" name="title"/><br>
-    <label>Year of Release:</label> <input id="year" type="text" name="year" required/><br>
-    <label>Name of Main Character:</label> <input id="character" type="text" name="character" required/><br>
-    <label>Image URL:</label> <input id="imageURL" name="imageURL" required/><br>
-    <label>Rating out of 10:</label>
+    <label for="title">Film Title:</label> <input id="title" type="text" name="title"/><br>
+    <label for="year">Year of Release:</label> <input id="year" type="text" name="year" required/><br>
+    <label for="character">Name of Main Character:</label> <input id="character" type="text" name="character" required/><br>
+    <label for="imageURL">Image URL:</label> <input id="imageURL" name="imageURL" required/><br>
+    <label for="rating">Rating out of 10:</label>
         <select name="rating" required>
             <option value="">Please select</option>
             <option value="0">0</option>
