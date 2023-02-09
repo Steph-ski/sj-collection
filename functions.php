@@ -73,7 +73,6 @@ function displayFilms(array $films): string
  */
 function validateAddNewItem(string $title, string $imageURL, string $year, string $mainCharacter, string $rating): string
 {
-    $result = null;
     $title = filter_var($title, FILTER_SANITIZE_STRING);
     $title = preg_match('/(^[_A-z0-9]*((-|\s)*[_A-z0-9])*$){0,250}/', $title);
 
@@ -88,9 +87,9 @@ function validateAddNewItem(string $title, string $imageURL, string $year, strin
     $rating = in_array($rating, range('0','10'));
 
     if ($title && $year && $imageURL && $mainCharacter && $rating) {
-       return $result = true;
+       return true;
     } else{
-        return $result = false;
+        return false;
     }
 }
 

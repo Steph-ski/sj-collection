@@ -76,7 +76,7 @@ class FunctionsTest extends TestCase
 
     public function testSuccessValidateNewItem()
     {
-        $expected = 'valid';
+        $expected = true;
         $case = validateAddNewItem('Babe', 'https://www.google.com/', '1998', 'Dave', '7');
         $this->assertEquals($expected, $case);
 
@@ -84,7 +84,7 @@ class FunctionsTest extends TestCase
 
     public function testFailureValidateNewItem()
     {
-        $expected = 'invalid';
+        $expected = false;
         $case = validateAddNewItem('B@be*', 'https://www.google.com/', '1598', 'Dave', '12');
         $this->assertEquals($expected, $case);
 
